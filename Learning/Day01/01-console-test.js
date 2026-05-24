@@ -22,3 +22,4 @@ const shipFitting = {
   capacitor: 120
 };
 console.table(shipFitting);  // Displays as a clean table in console
+//Test commit
