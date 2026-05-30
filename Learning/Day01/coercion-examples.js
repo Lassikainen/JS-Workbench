@@ -40,4 +40,3 @@ const walletBalance = 3200000;
 
 const newBalance = walletBalance + sellPriceString; // This will result in a string concatenation, not addition!
 console.log("New balance after sale:", newBalance); // "New balance after sale: 3200000450000" – oops, not what we wanted!
-  

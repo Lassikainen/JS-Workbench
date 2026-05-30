@@ -3,10 +3,10 @@
 
 // console.log() outputs to the terminal or browser console
 // It is the most important debugging tool you will ever use
-console.log("Capsuleer Caiphus reporting for duty");  // String output
+console.log("Capsuleer Caiphus reporting for duty"); // String output
 
 // You can log multiple values at once
-console.log("Ship hull:", 250, "Shield:", 180);  // Numbers and strings together
+console.log("Ship hull:", 250, "Shield:", 180); // Numbers and strings together
 
 // console.error() for serious problems (red in terminal)
 console.error("Warning: Capacitor at 12% – critical!");
@@ -19,7 +19,7 @@ const shipFitting = {
   shipType: "Kestrel",
   hull: 250,
   shield: 180,
-  capacitor: 120
+  capacitor: 120,
 };
-console.table(shipFitting);  // Displays as a clean table in console
+console.table(shipFitting); // Displays as a clean table in console
 //Test commit

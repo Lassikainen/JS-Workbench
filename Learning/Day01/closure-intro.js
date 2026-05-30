@@ -3,8 +3,8 @@
 
 function createShipCounter(initialHull = 10000) {
   // 'currentHull' lives in the outer scope and is closed over
-  let currentHull = initialHull;   // private variable - cannot be accessed directly
-  
+  let currentHull = initialHull; // private variable - cannot be accessed directly
+
   // Inner function remembers 'currentHull' even after createShipCounter finishes
   return function applyDamage(damage) {
     currentHull = Math.max(0, currentHull - damage); // edge-case: never go negative
@@ -18,8 +18,8 @@ const ravenCounter = createShipCounter(12000);
 const blackbirdCounter = createShipCounter(8000);
 
 console.log("=== Raven ===");
-ravenCounter(4500);     // Hull integrity now: 7500 HP
-ravenCounter(2000);     // Hull integrity now: 5500 HP
+ravenCounter(4500); // Hull integrity now: 7500 HP
+ravenCounter(2000); // Hull integrity now: 5500 HP
 
 console.log("=== Blackbird ===");
 blackbirdCounter(3000); // Hull integrity now: 5000 HP
