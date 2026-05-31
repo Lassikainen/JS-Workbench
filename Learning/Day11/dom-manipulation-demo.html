@@ -1,0 +1,25 @@
+<!-- DOM manipulation is the process of using JavaScript to interact with and modify the Document Object -->
+<!-- Model (DOM) of a web page. The DOM is a hierarchical representation of the HTML structure of a page, -->
+<!-- allowing you to access and manipulate elements, attributes, and content dynamically. //Best practices -->
+<!-- for DOM manipulation include minimizing direct DOM access for performance, using event delegation for -->
+<!-- handling events efficiently, and keeping JavaScript separate from HTML for better maintainability. You -->
+<!-- should avoid excessive DOM manipulation in performance-critical code or when working with large -->
+<!-- datasets, as it can lead to slow rendering and a poor user experience. // All selections happen on the -->
+<!-- document object // Run this in a browser with the matching HTML elements present -->
+
+<!-- Example HTML structure for testing:  -->
+<html>
+  <body>
+    <div id="hull-value">85000</div>
+    <div id="shield-bar">20000</div>
+    <div class="module-slot"></div>
+    <div class="module-slot"></div>
+    <button>Activate</button>
+    <button>Deactivate</button>
+
+    <!-- The script must be included in the body or head of the HTML document -->
+    <!-- If it needs to access DOM elements, it should be placed at the end of the body -->
+    <!-- Placing it at the start of the body would cause issues if the script tries to access elements that haven't been loaded yet -->
+    <script src="dom-manipulation-demo.js"></script>
+  </body>
+</html>
