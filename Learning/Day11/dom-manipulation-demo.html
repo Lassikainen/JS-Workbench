@@ -9,17 +9,54 @@
 
 <!-- Example HTML structure for testing:  -->
 <html>
+  <head>
+    <title>DOM Manipulation Demo</title>
+  </head>
   <body>
+    <!-- We can put styles here. Generally they are placed in the head or at the top of the body -->
+    <style>
+      .module-slot {
+        width: 100px;
+        height: 50px;
+        border: 1px solid #ccc;
+        margin: 5px;
+        display: inline-block;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+      }
+      .module-slot.selected {
+        background-color: #4caf50;
+        color: white;
+      }
+    </style>
     <div id="hull-value">85000</div>
     <div id="shield-bar">20000</div>
-    <div class="module-slot"></div>
-    <div class="module-slot"></div>
-    <button>Activate</button>
-    <button>Deactivate</button>
+    <div class="fitting-panel">
+      <div class="module-slot" data-slot-id="high1">High 1</div>
+      <div class="module-slot" data-slot-id="high2">High 2</div>
+      <br />
+      <div class="module-slot" data-slot-id="mid1">Mid 1</div>
+      <div class="module-slot" data-slot-id="mid2">Mid 2</div>
+      <br />
+      <div class="module-slot" data-slot-id="low1">Low 1</div>
+      <div class="module-slot" data-slot-id="low2">Low 2</div>
+    </div>
+    <div id="module-container">
+      <button>Activate</button>
+      <button>Deactivate</button>
+    </div>
 
     <!-- The script must be included in the body or head of the HTML document -->
     <!-- If it needs to access DOM elements, it should be placed at the end of the body -->
     <!-- Placing it at the start of the body would cause issues if the script tries to access elements that haven't been loaded yet -->
     <script src="dom-manipulation-demo.js"></script>
+    <script src="event-listeners-demo.js"></script>
+    <script>
+      // Initialize the fitting UI after the DOM is fully loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeFittingUI();
+      });
+    </script>
   </body>
 </html>
