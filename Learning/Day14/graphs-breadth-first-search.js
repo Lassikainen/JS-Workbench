@@ -37,5 +37,26 @@ function shortestJumpPath(start, target, jumpNetwork) {
   return -1; // no path
 }
 
+//What if we wanted to find the actual path, not just the number of jumps? We could modify the BFS to keep track of the path taken to reach each node.
+function shortestJumpPathWithRoute(start, target, jumpNetwork) {
+  const queue = [[start, [start]]]; // [system, path]
+  const visited = new Set([start]);
+
+  while (queue.length > 0) {
+    const [current, path] = queue.shift();
+    if (current === target) return path;
+    for (const neighbor of jumpNetwork[current] || []) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        queue.push([neighbor, [...path, neighbor]]); // enqueue with updated path
+      }
+    }
+  }
+  return -1; // no path
+}
+
+console.log(shortestJumpPath("Jita", "Kisogo", mapData)); // Output: 2
+console.log(shortestJumpPathWithRoute("Jita", "Kisogo", mapData)); // Output: ["Jita", "Perimeter", "Kisogo"]
+
 // Test inputs and outputs
 // Input: shortestJumpPath("Jita", "Kisogo", mapData) → Output: 2 (Jita → Perimeter → Kisogo)
