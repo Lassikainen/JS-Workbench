@@ -47,19 +47,21 @@ console.log(result[0], JSON.stringify(result[1])); // Output: 120, [{"mass":4,"v
 function maxCargoValueAndItemsDP(items, capacity) {
   const numItems = items.length;
   // dp[i][w] will hold the maximum value for the first i items and capacity w. itemIncluded[i][w] will track whether we included item i in the optimal solution for capacity w.
+
   //Array.from is used to create a 2D array (table) for dynamic programming. The outer array has numItems + 1 rows (to account for the case of 0 items), and each inner array has capacity + 1 columns (to account for capacities from 0 to the given capacity). We initialize all values to 0 for dp and false for itemIncluded.
   const dp = Array.from({ length: numItems + 1 }, () => Array(capacity + 1).fill(0));
   const itemIncluded = Array.from({ length: numItems + 1 }, () => Array(capacity + 1).fill(false));
 
   // Build the dp table iteratively
+  // We iterate through each item and each capacity to fill the dp table. For each item, we have two options: skip it or take it (if it fits). We compare the value of both options and store the maximum in dp[i][w]. If we take the item, we also mark it in the itemIncluded table for later reconstruction of the solution.
   for (let i = 1; i <= numItems; i++) {
-    // We iterate through each item and each capacity to fill the dp table. For each item, we have two options: skip it or take it (if it fits). We compare the value of both options and store the maximum in dp[i][w]. If we take the item, we also mark it in the itemIncluded table for later reconstruction of the solution.
     //w represents the current capacity we are trying to fill, and i represents the index of the item we are considering (1-based index for easier table management). We start from 1 because dp[0][w] represents the case of having no items, which is already initialized to 0.
     for (let w = 0; w <= capacity; w++) {
       // option 1: skip current item. This means we take the maximum value from the previous row (i - 1) for the same capacity w, which represents not including the current item.
       dp[i][w] = dp[i - 1][w];
       // option 2: take current item (if it fits)
       if (items[i - 1].mass <= w) {
+        //We calculate the value if we take the current item, which is the value of the current item plus the maximum value we can get with the remaining capacity (w - items[i - 1].mass) from the previous row (i - 1). This represents including the current item and then looking up the best solution for the remaining capacity.
         const valueWithItem = items[i - 1].value + dp[i - 1][w - items[i - 1].mass];
         //If this is better than the value we currently have stored in dp[i][w], we update dp[i][w] to this new value and mark that we included this item in the itemIncluded table
         if (valueWithItem > dp[i][w]) {
